@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+
+<h2>Deeplinks</h2>
+
+<b>Without parameters</b><br/>
+<a href="yandexsearch://">link</a><br/>
+<br/>
+
+<b>Internal browser</b><br/>
+vk.com - <a href="yandexsearch://?url=https%3A%2F%2Fvk.com">link</a></br/>
+<br/>
+
+
+<b>SERP</b><br/>
+Герберт Уэллс - <a href="yandexsearch://?url=viewport%3A%2F%2F%3Ftext%3D%25D0%2593%25D0%25B5%25D1%2580%25D0%25B1%25D0%25B5%25D1%2580%25D1%2582%2B%25D0%25A3%25D1%258D%25D0%25BB%25D0%25BB%25D1%2581">link</a></br/><br/>
+
+<b>Scroll</b><br/>
+Stocks - <a href="yandexsearch://?url=morda%3A%2F%2F%3Fcard%3Dstocks">link</a></br/>
+<br/>
+
+<b>Promolib</b><br/>
+Открыть с дефолтными настройками - <a href="yandexsearch://promolib/banner_actions/?campaign_id=123&request_id=234&data=PGJhbm5lckFjdGlvbnM%2BPGFjdGlvbiB0eXBlPSJvcGVuX3NlX3NldHRpbmdzIi8%2BPC9iYW5uZXJBY3Rpb25zPg%3D%3D">link</a><br/>
+<pre>&lt;bannerActions&gt;&lt;action type="open_se_settings"/&gt;&lt;/bannerActions&gt;</pre>
+
+Открыть настройки поисковика с кастомными настройками - <a href="yandexsearch://promolib/banner_actions/?campaign_id=123&request_id=234&data=PGJhbm5lckFjdGlvbnM%2BCiAgICA8YWN0aW9uIHR5cGU9Im9wZW5fc2Vfc2V0dGluZ3MiPgogICAgICAgIDx0YXJnZXQgdmVyc2lvbj0iMTAiPmh0dHBzOi8vaGFicmFoYWJyLnJ1PC90YXJnZXQ%2BCiAgICAgICAgPHRhcmdldCB2ZXJzaW9uPSI5IiBxdWV1ZT0ibWFpbiIvPgogICAgICAgIDx0YXJnZXQgdmVyc2lvbj0iOCIgZW5hYmxlZD0iZmFsc2UiLz4KICAgIDwvYWN0aW9uPgo8L2Jhbm5lckFjdGlvbnM%2B">link</a><br/>
+На iOS 10 открывает Хабр, на 9 - настройки с главного потока, на 8 ничего не делает:
+<pre><span class="nt">&lt;bannerActions&gt;</span>
+    <span class="nt">&lt;action</span> <span class="na">type=</span><span class="s">"open_se_settings"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;target</span> <span class="na">version=</span><span class="s">"10"</span><span class="nt">&gt;</span>https://habrahabr.ru<span class="nt">&lt;/target&gt;</span>
+        <span class="nt">&lt;target</span> <span class="na">version=</span><span class="s">"9"</span> <span class="na">queue=</span><span class="s">"main"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;target</span> <span class="na">version=</span><span class="s">"8"</span> <span class="na">enabled=</span><span class="s">"false"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/action&gt;</span>
+<span class="nt">&lt;/bannerActions&gt;</span></pre>
+
+<h2>Universal links</h2>
+
+<b>Development</b> - <a href="https://601012.redirect.appmetrica.yandex.com/?appmetrica_tracking_id=97106484332090026">601012.redirect.appmetrica.yandex.com</a><br/>
+<br/>
+<b>Testing</b> - <a href="https://42989.redirect.appmetrica.yandex.com/?appmetrica_tracking_id=97106484332090026">42989.redirect.appmetrica.yandex.com</a><br/>
+<br/>
+Tracking urls:<br/>
+Без диплинка - <a href="https://redirect.appmetrica.yandex.com/serve/385341592011025126">link</a><br/>
+Диплинк с кастомным параметром - <a href="https://redirect.appmetrica.yandex.com/serve/169168795754085281">link</a><br/>
+vk.com - <a href="https://redirect.appmetrica.yandex.com/serve/601514358689765952">link</a><br/>
+Герберт Уэллс - <a href="https://redirect.appmetrica.yandex.com/serve/457355766127411521">link</a><br/>
+Scroll to stocks - <a href="https://redirect.appmetrica.yandex.com/serve/601522856299339984">link</a><br/>
+<br/>
+Promolib с дефолтными настройками - <a href="https://42989.redirect.appmetrica.yandex.com/promolib/banner_actions/?campaign_id=123&request_id=234&appmetrica_tracking_id=456&data=PGJhbm5lckFjdGlvbnM%2BPGFjdGlvbiB0eXBlPSJvcGVuX3NlX3NldHRpbmdzIi8%2BPC9iYW5uZXJBY3Rpb25zPg%3D%3D
+">link</a><br/>
+Promolib с кастомными настройками (см. выше) - <a href="https://42989.redirect.appmetrica.yandex.com/promolib/banner_actions/?campaign_id=123&request_id=234&appmetrica_tracking_id=456&data=PGJhbm5lckFjdGlvbnM%2BCiAgICA8YWN0aW9uIHR5cGU9Im9wZW5fc2Vfc2V0dGluZ3MiPgogICAgICAgIDx0YXJnZXQgdmVyc2lvbj0iMTAiPmh0dHBzOi8vaGFicmFoYWJyLnJ1PC90YXJnZXQ%2BCiAgICAgICAgPHRhcmdldCB2ZXJzaW9uPSI5IiBxdWV1ZT0ibWFpbiIvPgogICAgICAgIDx0YXJnZXQgdmVyc2lvbj0iOCIgZW5hYmxlZD0iZmFsc2UiLz4KICAgIDwvYWN0aW9uPgo8L2Jhbm5lckFjdGlvbnM%2B
+">link</a><br/>
+<br/>
+<b>Production</b> - <a href="https://42984.redirect.appmetrica.yandex.com/?appmetrica_tracking_id=97106484332090026">42984.redirect.appmetrica.yandex.com</a>
+
+</body>
+</html>
+
