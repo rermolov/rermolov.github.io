@@ -4,7 +4,7 @@ const OFFLINE_DATA_FILE = "offline.js"
   , BROADCASTCHANNEL_NAME = "offline"
   , CONSOLE_PREFIX = "[SW] "
   , LAZYLOAD_KEYNAME = ""
-  , GAME_NAME = (location.search.match(/game-id=(\w+)/) || [])[1]
+  , GAME_NAME = "mygame"
   , broadcastChannel = "undefined" == typeof BroadcastChannel ? null : new BroadcastChannel("offline");
 function PostBroadcastMessage(e) {
     broadcastChannel && setTimeout(()=>broadcastChannel.postMessage(e), 3e3)
