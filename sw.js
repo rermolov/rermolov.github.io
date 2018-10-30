@@ -11,12 +11,16 @@ self.addEventListener('activate', event => {
   console.log('V1 now ready to handle fetches!');
 });
 
-self.addEventListener('fetch', event => {
-  const url = new URL(event.request.url);
-
-  // serve the cat SVG from the cache if the request is
-  // same-origin and the path is '/2.jpg'
-  if (url.origin == location.origin && url.pathname == '/1.jpg') {
-    event.respondWith(caches.match('/2.jpg'));
-  }
+self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    caches.match(event.request)
+      .then(function(response) {
+        // Cache hit - return response
+        if (response) {
+          return response;
+        }
+        return fetch(event.request);
+      }
+    )
+  );
 });
