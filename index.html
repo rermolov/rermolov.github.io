@@ -1,70 +1,14 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-</head>
 <body>
-<!--
-<h2>Deeplinks</h2>
+  <script type="text/javascript">
+    function doSomething() {
+       window.YandexApplicationsAPIBackend.openAuthDialog("dark");
+    }
+</script>
 
-<b>Without parameters</b><br/>
-<a href="yandexsearch://">link</a><br/>
-<br/>
-
-<b>Internal browser</b><br/>
-vk.com - <a href="yandexsearch://?url=https%3A%2F%2Fvk.com">link</a></br/>
-<br/>
-
-
-<b>SERP</b><br/>
-Герберт Уэллс - <a href="yandexsearch://?url=viewport%3A%2F%2F%3Ftext%3D%25D0%2593%25D0%25B5%25D1%2580%25D0%25B1%25D0%25B5%25D1%2580%25D1%2582%2520%25D0%25A3%25D1%258D%25D0%25BB%25D0%25BB%25D1%2581">link</a></br/><br/>
-
-<b>Scroll</b><br/>
-Stocks - <a href="yandexsearch://?url=morda%3A%2F%2F%3Fcard%3Dstocks">link</a></br/>
-<br/>
-
-<b>Promolib</b><br/>
-Открыть с дефолтными настройками - <a href="yandexsearch://promolib/banner_actions/?campaign_id=123&request_id=234&data=PGJhbm5lckFjdGlvbnM%2BPGFjdGlvbiB0eXBlPSJvcGVuX3NlX3NldHRpbmdzIi8%2BPC9iYW5uZXJBY3Rpb25zPg%3D%3D">link</a><br/>
-<pre>&lt;bannerActions&gt;&lt;action type="open_se_settings"/&gt;&lt;/bannerActions&gt;</pre>
-
-Открыть настройки поисковика с кастомными настройками - <a href="yandexsearch://promolib/banner_actions/?campaign_id=123&request_id=234&data=PGJhbm5lckFjdGlvbnM%2BCiAgICA8YWN0aW9uIHR5cGU9Im9wZW5fc2Vfc2V0dGluZ3MiPgogICAgICAgIDx0YXJnZXQgdmVyc2lvbj0iMTAiPmh0dHBzOi8vaGFicmFoYWJyLnJ1PC90YXJnZXQ%2BCiAgICAgICAgPHRhcmdldCB2ZXJzaW9uPSI5IiBxdWV1ZT0ibWFpbiIvPgogICAgICAgIDx0YXJnZXQgdmVyc2lvbj0iOCIgZW5hYmxlZD0iZmFsc2UiLz4KICAgIDwvYWN0aW9uPgo8L2Jhbm5lckFjdGlvbnM%2B">link</a><br/>
-На iOS 10 открывает Хабр, на 9 - настройки с главного потока, на 8 ничего не делает:
-<pre><span class="nt">&lt;bannerActions&gt;</span>
-    <span class="nt">&lt;action</span> <span class="na">type=</span><span class="s">"open_se_settings"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;target</span> <span class="na">version=</span><span class="s">"10"</span><span class="nt">&gt;</span>https://habrahabr.ru<span class="nt">&lt;/target&gt;</span>
-        <span class="nt">&lt;target</span> <span class="na">version=</span><span class="s">"9"</span> <span class="na">queue=</span><span class="s">"main"</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;target</span> <span class="na">version=</span><span class="s">"8"</span> <span class="na">enabled=</span><span class="s">"false"</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/action&gt;</span>
-<span class="nt">&lt;/bannerActions&gt;</span></pre>
-
-<h2>Universal links</h2>
-
-<b>Development</b> - <a href="https://601012.redirect.appmetrica.yandex.com/?appmetrica_tracking_id=97106484332090026">601012.redirect.appmetrica.yandex.com</a><br/>
-<br/>
-<b>Testing</b> - <a href="https://42984.redirect.appmetrica.yandex.com/?appmetrica_tracking_id=97106484332090026">42984.redirect.appmetrica.yandex.com</a><br/>
-<br/>
-Tracking urls:<br/>
-Без диплинка - <a href="https://redirect.appmetrica.yandex.com/serve/385341592011025126">link</a><br/>
-Диплинк с кастомным параметром - <a href="https://redirect.appmetrica.yandex.com/serve/169168795754085281">link</a><br/>
-vk.com - <a href="https://redirect.appmetrica.yandex.com/serve/601514358689765952">link</a><br/>
-Герберт Уэллс - <a href="https://redirect.appmetrica.yandex.com/serve/457355766127411521">link</a><br/>
-Scroll to stocks - <a href="https://redirect.appmetrica.yandex.com/serve/601522856299339984">link</a><br/>
-<br/>
-Promolib с дефолтными настройками - <a href="https://42984.redirect.appmetrica.yandex.com/promolib/banner_actions/?campaign_id=123&request_id=234&appmetrica_tracking_id=456&data=PGJhbm5lckFjdGlvbnM%2BPGFjdGlvbiB0eXBlPSJvcGVuX3NlX3NldHRpbmdzIi8%2BPC9iYW5uZXJBY3Rpb25zPg%3D%3D
-">link</a><br/>
-Promolib с кастомными настройками (см. выше) - <a href="https://42984.redirect.appmetrica.yandex.com/promolib/banner_actions/?campaign_id=123&request_id=234&appmetrica_tracking_id=456&data=PGJhbm5lckFjdGlvbnM%2BCiAgICA8YWN0aW9uIHR5cGU9Im9wZW5fc2Vfc2V0dGluZ3MiPgogICAgICAgIDx0YXJnZXQgdmVyc2lvbj0iMTAiPmh0dHBzOi8vaGFicmFoYWJyLnJ1PC90YXJnZXQ%2BCiAgICAgICAgPHRhcmdldCB2ZXJzaW9uPSI5IiBxdWV1ZT0ibWFpbiIvPgogICAgICAgIDx0YXJnZXQgdmVyc2lvbj0iOCIgZW5hYmxlZD0iZmFsc2UiLz4KICAgIDwvYWN0aW9uPgo8L2Jhbm5lckFjdGlvbnM%2B
-">link</a><br/>
-<br/>
-<b>Production</b> - <a href="https://42989.redirect.appmetrica.yandex.com/?appmetrica_tracking_id=97106484332090026">42989.redirect.appmetrica.yandex.com</a>
--->
-
-<h2>Spectacular Mountain</h2>
- <iframe src="test_navigations.html" width="400" height="250" align="left">
-    Ваш браузер не поддерживает плавающие фреймы!
- </iframe>
- <iframe src="https://coub.com/embed/u7h5g" frameborder="0" style="width: 400; height: 200; position: left"></iframe>
- <iframe src="https://www.youtube.com/embed/ghEo1AZhxXI?feature=oembed&amp;iv_load_policy=3&amp;showinfo=0&amp;color=white" frameborder="0" allowfullscreen="" style="width: 400; height: 200; position: left"></iframe>
- <iframe name="fXD5e7f3" frameborder="0" src="https://vk.com/widget_post.php?app=0&amp;width=100%25&amp;_ver=1&amp;owner_id=-29534144&amp;post_id=7100698&amp;hash=j9HM2OeOrD2RovDmu0kwmNnu&amp;startWidth=650&amp;url=https%3A%2F%2Fmeduza.io%2Fshapito%2F2017%2F08%2F30%2Fnavalnyy-est-doshirak-bitva-fotozhab&amp;referrer=&amp;title=%D0%9D%D0%B0%D0%B2%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%B5%D1%81%D1%82%20%C2%AB%D0%94%D0%BE%D1%88%D0%B8%D1%80%D0%B0%D0%BA%C2%BB.%20%D0%91%D0%B8%D1%82%D0%B2%D0%B0%20%D1%84%D0%BE%D1%82%D0%BE%D0%B6%D0%B0%D0%B1%20%E2%80%94%20Meduza&amp;15e3385568c" width="100%" height="90" scrolling="no" id="vkwidget1" style="overflow: hidden; height: 508px;"></iframe>
- <iframe name="fXDeb429" frameborder="0" src="https://vk.com/widget_post.php?app=4575679&amp;width=100%25&amp;_ver=1&amp;owner_id=-29534144&amp;post_id=7100813&amp;hash=b0AlbYSyGf1hZirYjSnaZsjr&amp;startWidth=650&amp;url=https%3A%2F%2Fmeduza.io%2Fshapito%2F2017%2F08%2F30%2Fnavalnyy-est-doshirak-bitva-fotozhab&amp;referrer=&amp;title=%D0%9D%D0%B0%D0%B2%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%B5%D1%81%D1%82%20%C2%AB%D0%94%D0%BE%D1%88%D0%B8%D1%80%D0%B0%D0%BA%C2%BB.%20%D0%91%D0%B8%D1%82%D0%B2%D0%B0%20%D1%84%D0%BE%D1%82%D0%BE%D0%B6%D0%B0%D0%B1%20%E2%80%94%20Meduza&amp;15e33855696" width="100%" height="90" scrolling="no" id="vkwidget7" style="overflow: hidden; height: 454px;"></iframe>
+  <a href = "#" onClick="doSomething()">JS.openAuthDialog()</a>
+  <br>
+  <a href = "yellowskin://?url=https%3A%2F%2Fcodepen.io%2Frermolov%2Ffull%2FPgwpQr">this</a>
 </body>
 </html>
