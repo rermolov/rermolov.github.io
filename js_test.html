@@ -3,6 +3,13 @@
 <head>
   <title>Index</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript">
+    function changeHref() {
+      var url = "yellowskin://?url=" + escape(document.URL);
+      document.getElementById("samePageYS").href = url;
+    }
+    window.onload = changeHref;
+  </script>
 </head>
 <body>
   <script type="text/javascript">
@@ -15,13 +22,9 @@
       window.YandexApplicationsAPIBackend.on('authDialogFinished', onAuthDialogFinished);
       window.YandexApplicationsAPIBackend.openAuthDialog(style);
     }
-
-    function openAsYellowSkin() {
-      window.location = "yellowskin://?url=" + escape(document.URL);
-    }
 </script>
 
-  <a href = "#" onClick="openAsYellowSkin()">Open this page as YellowSkin</a>
+  <a href = "#" id="samePageYS">Open this page as YellowSkin</a>
   <br>
   <br>
   AuthDialog API:
