@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Index</title>
+  <title>JS API Test</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script type="text/javascript">
     function changeHref() {
-      var url = "yellowskin://?url=" + escape(document.URL);
+      var url = "yellowskin://?background_color=%23ff2400&buttons_color=%23ffffff&omnibox_color=%23ff4f00&status_bar_theme=dark&text_color=%23ffffff&url=" + escape(document.URL);
       document.getElementById("samePageYS").href = url;
     }
     window.onload = changeHref;
