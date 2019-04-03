@@ -12,12 +12,12 @@
       window.YandexApplicationsAPIBackend.openAuthDialog(style);
     }
 
-    function openThisPageAsYS() {
-      window.open("yellowskin://?url=" + escape(document.URL));
+    function openAsYellowSkin() {
+      window.location = "yellowskin://?url=" + escape(document.URL);
     }
 </script>
 
-  <a href = "" onClick="openThisPageAsYS()">Open this page as YellowSkin</a>
+  <a href = "#" onClick="openAsYellowSkin()">Open this page as YellowSkin</a>
   <br>
   <br>
   AuthDialog API:
