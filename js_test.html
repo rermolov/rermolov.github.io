@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <script type="text/javascript">
+    function onAuthDialogFinished(success) {
+      document.getElementById("authState").innerText = success ? "authorized" : "not authorized";
+    }
+
+    function openAuthDialog(style) {
+      document.getElementById("authState").innerText = "none";
+      window.YandexApplicationsAPIBackend.on('authDialogFinished', onAuthDialogFinished);
+      window.YandexApplicationsAPIBackend.openAuthDialog(style);
+    }
+
+    function openThisPageAsYS() {
+      window.location.href = "yellowskin://?url=" + escape(document.URL);
+    }
+</script>
+
+  <a href = "" onClick="openThisPageAsYS()">Open this page as YellowSkin</a>
+  <br>
+  <br>
+  AuthDialog API:
+  <br>
+  <a href = "#" onClick="openAuthDialog('dark')">openAuthDialog('dark')</a>
+  <br>
+  <a href = "#" onClick="openAuthDialog('light')">openAuthDialog('light')</a>
+  <br>
+  auth state:&nbsp;
+  <span id="authState">none</span>
+</body>
+</html>
