@@ -17,10 +17,10 @@
       document.getElementById("authState").innerText = success ? "authorized" : "not authorized";
     }
 
-    function openAuthDialog(style) {
+    function openAuthDialog(style, source) {
       document.getElementById("authState").innerText = "none";
       window.YandexApplicationsAPIBackend.on('EVENT_AUTH_FINISHED', onAuthDialogFinished);
-      window.YandexApplicationsAPIBackend.openAuthDialog(style);
+      window.YandexApplicationsAPIBackend.openAuthDialog(style, source);
     }
 </script>
 
