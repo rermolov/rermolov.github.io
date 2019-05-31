@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>JS API Test</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name='viewport' content='initial-scale=1, viewport-fit=cover'>
   <script type="text/javascript">
     function changeHref() {
       var url = "yellowskin://?background_color=%23ff2400&buttons_color=%23ffffff&omnibox_color=%23ff4f00&status_bar_theme=dark&text_color=%23ffffff&url=" + escape(document.URL);
@@ -22,6 +22,16 @@
       window.YandexApplicationsAPIBackend.on('EVENT_AUTH_FINISHED', 'onAuthDialogFinished');
       window.YandexApplicationsAPIBackend.openAuthDialog(style, source);
     }
+
+    function addOverrideHostEntries() {
+      window.yandex.publicFeature.addOverrideHostEntries([
+      {
+        keyUrl: document.URL,
+        displayUrl: 'https://yaturbo.ru/123',
+        displayHost: 'lenta.ru'
+      }
+      ]);
+    }
 </script>
 
   <a href = "#" id="samePageYS">Open this page as YellowSkin</a>
@@ -29,13 +39,18 @@
   <br>
   AuthDialog API:
   <br>
-  <a href = "#" onClick="openAuthDialog('dark')">openAuthDialog('dark')</a>
+  <button type="button" onclick="openAuthDialog('dark')">openAuthDialog('dark')</button>
   <br>
-  <a href = "#" onClick="openAuthDialog('light')">openAuthDialog('light')</a>
+  <button type="button" onclick="openAuthDialog('light')">openAuthDialog('light')</button>
   <br>
-  <a href = "#" onClick="openAuthDialog('light', 'customSource')">openAuthDialog('dark','customSource')</a>
+  <button type="button" onclick="openAuthDialog('light', 'customSource')">openAuthDialog('dark','customSource')</button>
   <br>
   auth state:&nbsp;
   <span id="authState">none</span>
+  <br>
+  <br>
+  Overrides API:
+  <br>
+  <button type="button" onclick="addOverrideHostEntries()">addOverrideHostEntries</button>
 </body>
 </html>
