@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JS API Test</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no"/>
+</head>
+<body>
+  <script type="text/javascript">
+
+    function onSuccess(result) {
+        document.getElementById("events").innerHTML += "login";
+    }
+
+    function onFailure(errorMessage) {
+        let message = "logout " + errorMessage;
+        document.getElementById("events").innerHTML += message;
+    }
+    
+    function requestAuthOnPortal() {
+        window.yandexAuthApiProto.requestAuthOnPortal(onSuccess, onFailure)
+    }
+  </script>
+  <h1>Auth dialog</h1>
+  <br/>
+  <button type="button" onclick="requestAuthOnPortal(onSuccess, onFailure)">openAuthDialog</button>
+  <br/>
+  <br/>
+  <b>events:</b>
+  <b id="events"></b>
+</body>
+</html>
+
