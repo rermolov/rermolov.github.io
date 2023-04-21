@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>Яндекс Deeplinks</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" href="touch-icon-iphone.png" />
+</head>
+<body>
+target deeplink: <input type="text" id="deeplink" name="name" required
+       minlength="0" maxlength="1000" size="100">
+<br>
+<br>
+<br>
+<button onclick="go()">GO</button>
+<br>
+<br>
+<br>
+<button onclick="setText('yandexbank://yandex_bank/finish-esia')">yandexbank://yandex_bank/finish-esia</button>
+<br>
+<br>
+<br>
+<button onclick="setText('yandexbank://deeplink/close_with_result?scenario=credit_limit_upgrade&result=success')">yandexbank://deeplink/close_with_result?scenario=credit_limit_upgrade&result=success</button>
+<br>
+<br>
+<br>
+<button onclick="setText('yandexbank://webview.action/redirect?url=https%3A%2F%2Fcodepen.io%2Fiforve%2Ffull%2FBaqpyjZ')">Open this page as SVC</button>
+
+      <script id='rendered-js'>
+function setText(text) {
+  var inputField = document.getElementById('deeplink');
+  inputField.value = text;
+}
+
+function go() {
+  var inputField = document.getElementById('deeplink');
+  location.assign(inputField.value);
+}
+    </script>
+</body>
+</html>
