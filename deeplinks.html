@@ -25,7 +25,16 @@ target deeplink: <input type="text" id="deeplink" name="name" required
 <br>
 <button onclick="setText('yandexbank://webview.action/redirect?url=https%3A%2F%2Frermolov.github.io%2Fdeeplinks.html')">Open this page as SVC</button>
 
-      <script id='rendered-js'>
+<script id='rendered-js'>
+function getParameterByName(name, url = window.location.href) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
 function setText(text) {
   var inputField = document.getElementById('deeplink');
   inputField.value = text;
@@ -35,6 +44,9 @@ function go() {
   var inputField = document.getElementById('deeplink');
   location.assign(inputField.value);
 }
-    </script>
+
+setText(getParameterByName('retPath'));
+
+</script>
 </body>
 </html>
